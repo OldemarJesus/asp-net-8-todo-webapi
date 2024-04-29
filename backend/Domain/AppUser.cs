@@ -4,6 +4,6 @@ namespace backend.Domain
 {
     public class AppUser : IdentityUser
     {
-        public IEnumerable<Note>? Notes { get; set; }
-    }
+        public IList<Note> Notes { get; private set; } = new List<Note>();
+     }
 }

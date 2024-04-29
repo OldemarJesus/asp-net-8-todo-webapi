@@ -1,15 +1,25 @@
+using backend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
     [ApiController]
     [Route("api/notes")]
+    [Authorize]
     public class NoteController : ControllerBase
     {
-        [HttpGet()]
-        public IActionResult GetNote()
+        private readonly INoteService _service;
+
+        public NoteController(INoteService service)
         {
-            return Ok("nothing");
+            _service = service;
+        }
+
+        [HttpGet()]
+        public IActionResult GetNotes()
+        {
+            return Ok(_service.GetAllNotes());
         }
     }
 }
