@@ -1,4 +1,3 @@
-
 using backend.Context;
 using backend.Domain;
 
@@ -16,6 +15,7 @@ namespace backend.Repositories
         bool IRepository<Note>.Create(Note item)
         {
             _context.Notes.Add(item);
+            _context.SaveChanges();
             return true;
         }
 
@@ -26,6 +26,7 @@ namespace backend.Repositories
             if (note != null)
             {
                 _context.Notes.Remove(note);
+                _context.SaveChanges();
                 return true;
             }
 
@@ -46,6 +47,7 @@ namespace backend.Repositories
         bool IRepository<Note>.SaveChanges(Note item)
         {
             _context.Notes.Update(item);
+            _context.SaveChanges();
             return true;
         }
     }

@@ -7,6 +7,7 @@ namespace backend.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddTransient<INoteService, NoteService>();
+            services.AddTransient<IAppUserService, AppUserService>();
             return services;
         }
     }

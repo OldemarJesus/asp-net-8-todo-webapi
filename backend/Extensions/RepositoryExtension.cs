@@ -8,6 +8,7 @@ namespace backend.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddTransient<IRepository<Note>, NoteRepository>();
+            services.AddTransient<IAppUserRepository, AppUserRepository>();
             return services;
         }
     }
